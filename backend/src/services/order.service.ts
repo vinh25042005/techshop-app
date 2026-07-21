@@ -2,6 +2,7 @@
 import prisma from '../config/database';
 import { AppError } from '../middleware/errorHandler';
 import { OrderStatus } from '../types';
+import type { Prisma } from '@prisma/client';
 
 export class OrderService {
   async createOrder(userId: string, items: { productId: string; quantity: number }[]) {
@@ -25,7 +26,7 @@ export class OrderService {
     }
 
     // Create order and decrease stock in transaction
-    const order = await prisma.$transaction(async (tx) => {
+    const order = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const order = await tx.order.create({
         data: {
           userId,
@@ -110,7 +111,7 @@ export class OrderService {
     }
 
     // Cancel and restore stock
-    const updated = await prisma.$transaction(async (tx) => {
+    const updated = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       const updatedOrder = await tx.order.update({
         where: { id: orderId },
         data: { status: OrderStatus.CANCELLED },
