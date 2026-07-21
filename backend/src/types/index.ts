@@ -1,5 +1,17 @@
 // Type definitions
-import { Role, OrderStatus } from '@prisma/client';
+
+export enum Role {
+  ADMIN = 'ADMIN',
+  CUSTOMER = 'CUSTOMER',
+}
+
+export enum OrderStatus {
+  PENDING = 'PENDING',
+  CONFIRMED = 'CONFIRMED',
+  SHIPPING = 'SHIPPING',
+  DELIVERED = 'DELIVERED',
+  CANCELLED = 'CANCELLED',
+}
 
 export interface RegisterInput {
   email: string;
@@ -38,5 +50,3 @@ export interface AddToCartInput {
 export interface CreateOrderInput {
   items: { productId: string; quantity: number }[];
 }
-
-export { Role, OrderStatus };

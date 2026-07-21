@@ -3,7 +3,7 @@ import { Response, NextFunction } from 'express';
 import { orderService } from '../services/order.service';
 import { createOrderSchema } from '../validators';
 import { AuthRequest } from '../middleware/auth';
-import { OrderStatus } from '@prisma/client';
+import { OrderStatus } from '../types';
 
 export class OrderController {
   async create(req: AuthRequest, res: Response, next: NextFunction) {

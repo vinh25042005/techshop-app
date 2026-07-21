@@ -1,7 +1,7 @@
 // Order Service
 import prisma from '../config/database';
 import { AppError } from '../middleware/errorHandler';
-import { OrderStatus } from '@prisma/client';
+import { OrderStatus } from '../types';
 
 export class OrderService {
   async createOrder(userId: string, items: { productId: string; quantity: number }[]) {
