@@ -1,0 +1,10 @@
+frontend/
+node_modules/
+.git/
+*.log
+.env
+.gitignore
+README.md
+docker-compose.yml
+helm/
+database/prisma/migrations/
