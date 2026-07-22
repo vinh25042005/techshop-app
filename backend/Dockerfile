@@ -36,6 +36,7 @@ COPY --from=build --chown=backend:backend /build/database ./database
 
 # Fix prisma schema path for container (dev uses ../, container uses ./)
 RUN sed -i 's|"../database/prisma|"database/prisma|g' package.json
+RUN npx prisma generate --schema=database/prisma/schema.prisma
 
 USER backend
 
