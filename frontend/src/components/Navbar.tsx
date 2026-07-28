@@ -23,7 +23,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl">🛍️</span>
+            <span className="text-2xl">🛍️ <span className="text-sm text-gray-400">v2</span></span>
             <span className="text-xl font-bold text-primary-600">TechShop <span className="text-xs text-green-500 ml-1">CI</span></span>
           </Link>
 
