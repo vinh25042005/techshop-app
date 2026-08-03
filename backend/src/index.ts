@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 1000, // nâng từ 100 → đủ cho traffic generator (30 req/phút = 450/15min)
+  max: 2000, // nâng từ 100 → đủ cho traffic generator (2 req/s = 120/phút = 1800/15min)
   standardHeaders: true,
   legacyHeaders: false,
   message: { status: 'error', message: 'Too many requests, please try again later.' },
