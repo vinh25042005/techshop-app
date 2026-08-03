@@ -12,7 +12,7 @@ import { swaggerSpec } from './config/swagger';
 import prisma from './config/database';
 
 // Load environment variables
-//test build stg
+//test build stg 1
 dotenv.config();
 
 const app = express();
