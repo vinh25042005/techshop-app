@@ -41,7 +41,7 @@ app.use((req, res, next) => {
   const start = process.hrtime.bigint();
   res.on('finish', () => {
     const durationSeconds = Number(process.hrtime.bigint() - start) / 1e9;
-    const route = req.route && req.route.path ? req.route.path : req.path;
+    const route = req.route?.path || req.path;
     httpRequestDuration.labels(req.method, route, String(res.statusCode)).observe(durationSeconds);
   });
   next();
