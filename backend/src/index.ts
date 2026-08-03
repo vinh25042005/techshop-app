@@ -18,6 +18,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// ── Reverse proxy (ingress-nginx) ──
+// Backend nằm sau ingress-nginx (route /api) → cần trust proxy để
+// express-rate-limit + IP client hoạt động đúng với header X-Forwarded-For.
+app.set('trust proxy', 1);
+
 // ── Prometheus metrics (RED: Rate / Errors / Duration) ──
 client.collectDefaultMetrics();
 const httpRequestDuration = new client.Histogram({
